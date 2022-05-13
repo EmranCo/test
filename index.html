@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FilePond from CDN</title>
+
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet" />
+
+    <link href="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css" rel="stylesheet" />
+
+
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
+
+
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+    <style>
+        /*
+ * FilePond Custom Styles
+ */
+        
+        .filepond--drop-label {
+            color: #4c4e53;
+        }
+        
+        .filepond--label-action {
+            text-decoration-color: #babdc0;
+        }
+        
+        .filepond--panel-root {
+            background-color: #edf0f4;
+        }
+        /**
+ * Page Styles
+ */
+        
+        html {
+            padding: 20vh 0 0;
+        }
+        
+        .filepond--root {
+            width: 170px;
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--
+The classic file input element we'll enhance
+to a file pond, configured with attributes
+-->
+    <input type="file" class="filepond" name="filepond" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3">
+
+
+
+
+
+    <script>
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginImageExifOrientation,
+            FilePondPluginFileValidateSize,
+            FilePondPluginImageEdit
+        );
+
+        // Select the file input and use 
+        // create() to turn it into a pond
+        FilePond.create(
+            document.querySelector('input')
+        );
+    </script>
+</body>
+
+</html>
